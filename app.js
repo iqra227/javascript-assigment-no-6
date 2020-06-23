@@ -63,13 +63,16 @@ a.slice(1).toLowerCase()
 document.write("Title case: Javascript")
 alert(newName)
 //task no 12:
-var num = 35.36;
-document.write("Number: 35.36"+"<br>");
-var arr = (num.toString())
-alert(arr)
-var b = replace("35.36","3536");
-document.write("Result: 3536");
-alert(b)
+function myDot() {
+    var str = '35.36';
+         document.write("Number: "+str);
+         
+         var res = str.replace(/\./g,'');
+         document.write("<br>Result: "+res);
+
+  document.getElementById("dot").innerHTML = numberAsString;
+}
+
 //task no 13:
 var userName = "wajih";
 var a = prompt("Enter a name");
@@ -142,27 +145,48 @@ alert(round)
 alert(floor)
 alert(ceil)
 //task no 3:
-var arr= -4;
-absolute(arr);
-alert(arr);
-document.write("The absolute value of -4 is 4");
+function myAbsl() {
+  var value = prompt("Please enter absolute value:", "-4");
+
+  document.getElementById("abss").innerHTML = " The absoluste value " + value + " is:  " + Math.abs(value);
+}
 //task no 4:
-var bigDecimal = Math.random();
-var randomDice = 4;
-document.write("random dice value: 4"+"<br>");
-var improvedNum = (bigDecimal * 6) + 4;
-var numberOfStars = Math.floor(improvedNum);
-alert(numberOfStars)
-document.write("random dice value: 6");
+function getRndInteger() {
+var diceRoll = Math.floor( Math.random() * 6 ) +1;
+alert('Random diec value: ' + diceRoll);
+var dice = "Random dice value is: " + diceRoll ;
+  return dice;
+}
 //task no 5: 
-var a = prompt("Enter a value1")
-var b = prompt("Enter a value2");
-if(a === 2){
-    document.write("2:\nrandom coin value:Heads")
+function getRndnum() {
+var ranNum = Math.floor(Math.random() * 100);
+alert(' Random Number between 1 till 100 is ' + ranNum );
+  return ranNum;
 }
-else if(b === 1){
-    document.write("1:\nrandom coin value:Tails")
+function getRnd() {
+var coinRoll = Math.floor( Math.random() * 2 ) +1;
+var coin = coinRoll;
+
+if  (coin == 2) {
+alert(coinRoll + ' Random coin value is Head ');
+
 }
+ else if (coin == 1) {
+ alert(coinRoll + ' Random coin value is Tails');
+ }
+ 
+  return coinRoll;
+}
+
+//task no 6:
+function getRndnum() {
+var ranNum = Math.floor(Math.random() * 100);
+alert(' Random Number between 1 till 100 is ' + ranNum );
+  return ranNum;
+}
+function getRnd() {
+var coinRoll = Math.floor( Math.random() * 2 ) +1;
+var coin = coinRoll;
 //task no 7:
 var weight = prompt("Enter your weight");
 if("weight===50"){
@@ -295,12 +319,66 @@ function foo(width=34,height=24){
 }
 alert(foo(34,24))
 foo();
-//task no 11:
-function add(){
-    var a="the quick brown fox";
-    alert(a[0].toUpperCase())
+//task no 10:
+function check_Palindrome(str_entry){
+   var cstr = str_entry.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'');
+	var ccount = 0;
+	if(cstr==="") {
+		console.log("Nothing found!");
+		return false;
+	}
+	if ((cstr.length) % 2 === 0) {
+		ccount = (cstr.length) / 2;
+	} else {
+		if (cstr.length === 1) {
+			console.log("Entry is a palindrome.");
+			return true;
+		} else {
+			ccount = (cstr.length - 1) / 2;
+		}
+	}
+	for (var x = 0; x < ccount; x++) {
+		if (cstr[x] != cstr.slice(-1-x)[0]) {
+			console.log("Entry is not a palindrome.");
+			return false;
+		}
+	}
+	console.log("The entry is a palindrome.");
+	return true;
 }
-add();
+check_Palindrome('madam');
+check_Palindrome('nurses run');
+check_Palindrome('fox');
+
+//task no 11:
+function uppercase(str)
+{
+  var array1 = str.split(' ');
+  var newarray1 = [];
+    
+  for(var x = 0; x < array1.length; x++){
+      newarray1.push(array1[x].charAt(0).toUpperCase()+array1[x].slice(1));
+  }
+  return newarray1.join(' ');
+}
+console.log(uppercase("the quick brown fox"));
+//task no 12:
+function find_longest_word(str)
+{
+  var array1 = str.match(/\w[a-z]{0,}/gi);
+  var result = array1[0];
+
+  for(var x = 1 ; x < array1.length ; x++)
+  {
+    if(result.length < array1[x].length)
+    {
+    result = array1[x];
+    } 
+  }
+  return result;
+}
+console.log(find_longest_word('Web Development Tutorial'));
+
 //task no 14:
 function calc(circumference){
     var radius = 24;
